@@ -7,8 +7,8 @@ services:
     ports:
       - "${SANTE_SDB_POSTGRES_PORT}:5432"
     environment:
-      POSTGRES_USER: ${SANTE_POSTGRES_USER} #santedb
-      POSTGRES_PASSWORD: ${SANTE_POSTGRES_PASSWORD} #SanteDB123
+      POSTGRES_USER: ${SANTE_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${SANTE_POSTGRES_PASSWORD}
     volumes:
       - santeMPIDbData:/var/lib/postgresql/data
 
