@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<MatchConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="moz.matching.algorithm.gender.birthdate.blocking" evaluationMode="strength" nonmatchThreshold="0.7" matchThreshold="0.76" uuid="9b243ac2-7c69-4688-a99a-e61d210bf54f" xmlns="http://santedb.org/matcher">
+  <meta>
+    <createdBy>Administrator</createdBy>
+    <creationTime>2023-08-15T10:01:14.726Z</creationTime>
+    <status>Inactive</status>
+    <version>17</version>
+    <tags>
+      <add key="$mdm.auto-link">false</add>
+    </tags>
+    <updatedTime>2023-08-17T13:49:57.641587+00:00</updatedTime>
+    <updatedBy>Administrator</updatedBy>
+    <isReadonly>false</isReadonly>
+  </meta>
+  <target resource="Patient" />
+  <blocking useLowerLayer="false" op="and" maxResults="10">
+    <filter when="dateOfBirth">dateOfBirth=$input.dateOfBirth</filter>
+    <filter when="genderConcept">genderConcept=$input.genderConcept</filter>
+  </blocking>
+  <scoring>
+    <attribute m="0.583" u="0.5" property="dateOfBirth" whenNull="disqualify" required="false">
+      <when />
+      <assert op="eq" />
+    </attribute>
+    <attribute m="0.538" u="0.5" property="genderConcept" whenNull="disqualify" required="false">
+      <when />
+      <assert op="eq" />
+    </attribute>
+    <attribute m="0.796" u="0.5" property="name" whenNull="disqualify" required="false">
+      <when />
+      <assert op="and">
+        <assert op="gte" value="0.85">
+          <transform name="namepart_extract">
+            <args>
+              <string>Given</string>
+            </args>
+          </transform>
+          <transform name="jaro_winkler">
+            <args />
+          </transform>
+        </assert>
+        <assert op="gte" value="0.8">
+          <transform name="namepart_extract">
+            <args>
+              <string>Family</string>
+            </args>
+          </transform>
+          <transform name="jaro_winkler">
+            <args />
+          </transform>
+        </assert>
+      </assert>
+    </attribute>
+  </scoring>
+</MatchConfiguration>
