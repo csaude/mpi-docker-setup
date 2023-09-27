@@ -10,7 +10,7 @@ services:
       POSTGRES_USER: ${SANTE_POSTGRES_USER}
       POSTGRES_PASSWORD: ${SANTE_POSTGRES_PASSWORD}
     volumes:
-      - santeMPIDbData:/var/lib/postgresql/data
+      - santedb-data:/var/lib/postgresql/data
 
     restart: unless-stopped
 
@@ -42,7 +42,7 @@ services:
       - "${SANTE_DB_MPI_AUX_PORT}:2100"
     depends_on:
       - db
-    - restart: unless-stopped
+    restart: unless-stopped
 
   www:
     image: santesuite/santedb-www@sha256:a35ac54821ad047457bd2d0081386e8f913e4fe3be580d3635dfc390446cb9d3
@@ -54,5 +54,5 @@ services:
     restart: unless-stopped
 
 volumes:
-  santeMPIDbData:
+  santedb-data:
     external: true

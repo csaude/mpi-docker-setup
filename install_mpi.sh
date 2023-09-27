@@ -14,6 +14,8 @@ else
     exit 1
 fi
 
-docker volume create santeMPIDbData
+docker volume create santedb-data
 
 docker-compose up -d
+
+docker logs --follow santedb-mpi
