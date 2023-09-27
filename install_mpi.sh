@@ -14,4 +14,6 @@ else
     exit 1
 fi
 
+docker volume create santeMPIDbData
+
 docker-compose up -d

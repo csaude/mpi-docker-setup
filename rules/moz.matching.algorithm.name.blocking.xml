@@ -3,12 +3,12 @@
   <meta>
     <createdBy>Administrator</createdBy>
     <creationTime>2023-08-17T09:30:09.193Z</creationTime>
-    <status>Active</status>
-    <version>70</version>
+    <status>Inactive</status>
+    <version>79</version>
     <tags>
       <add key="$mdm.auto-link">false</add>
     </tags>
-    <updatedTime>2023-08-21T14:49:44.018949+00:00</updatedTime>
+    <updatedTime>2023-08-23T08:35:06.486366+00:00</updatedTime>
     <updatedBy>Administrator</updatedBy>
     <isReadonly>false</isReadonly>
   </meta>
@@ -21,7 +21,7 @@
     <attribute m="0.844" u="0.5" property="name" whenNull="disqualify" required="false">
       <when />
       <assert op="and" value="0.85">
-        <assert op="gte" value="0.985">
+        <assert op="gte" value="0.85">
           <transform name="namepart_extract">
             <args>
               <string>Given</string>
@@ -31,7 +31,7 @@
             <args />
           </transform>
         </assert>
-        <assert op="gte" value="0.97">
+        <assert op="gte" value="0.8">
           <transform name="namepart_extract">
             <args>
               <string>Family</string>

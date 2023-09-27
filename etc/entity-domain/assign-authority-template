@@ -8,7 +8,7 @@
       <isUnique>false</isUnique>
       <assigningApplication>{{security_id}}</assigningApplication>
   </resource>
-​
+
   <resource xsi:type="AssigningAuthority">
       <id>E8275680-5129-4832-9668-131F76E8DFB8</id>
       <name>OPENMRS SYSTEM URI</name>

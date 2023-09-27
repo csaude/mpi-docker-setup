@@ -12,7 +12,7 @@ services:
     volumes:
       - santeMPIDbData:/var/lib/postgresql/data
 
-    restart: always
+    restart: unless-stopped
 
   santedb:
     image: santesuite/santedb-mpi@sha256:608484de046a932ec2f92e9991a32507fc8ec89d53d7639cbab886a63dbf6207
@@ -35,9 +35,6 @@ services:
       - SDB_FHIR_STRICT=true
       - SDB_FHIR_ELEMENTID=true
     volumes:
-      - ./rules/moz.matching.algorithm.gender.birthdate.blocking.xml:/santedb/match/moz.matching.algorithm.gender.birthdate.blocking.xml
-      - ./rules/moz.matching.algorithm.name.blocking.hight.distance.xml:/santedb/match/moz.matching.algorithm.name.blocking.hight.distance.xml
-      - ./rules/moz.matching.algorithm.name.blocking.low.distance.xml:/santedb/match/moz.matching.algorithm.name.blocking.low.distance.xml
       - ./rules/moz.matching.algorithm.name.blocking.xml:/santedb/match/moz.matching.algorithm.name.blocking.xml
       - ./rules/moz.matching.algorithm.nid.blocking.xml:/santedb/match/moz.matching.algorithm.nid.blocking.xml
     ports:
@@ -45,7 +42,7 @@ services:
       - "${SANTE_DB_MPI_AUX_PORT}:2100"
     depends_on:
       - db
-        #restart: no
+    - restart: unless-stopped
 
   www:
     image: santesuite/santedb-www@sha256:a35ac54821ad047457bd2d0081386e8f913e4fe3be580d3635dfc390446cb9d3
@@ -54,8 +51,8 @@ services:
       - "${SANTE_DB_WWW_PORT}:9200"
     depends_on:
       - santedb
-    restart: always
+    restart: unless-stopped
 
 volumes:
   santeMPIDbData:
-    driver: local
+    external: true
