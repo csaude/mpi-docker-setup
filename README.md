@@ -36,6 +36,10 @@ Follow these steps to set up and use the MPI Docker container:
                 <ul>
                         <pre>Provide the necessary values for properties in mpi.env </pre>
                 </ul>
+                <ul>
+                        cp mpi.env /etc/profile.d/
+                        . /etc/profile.d/mpi.env
+                </ul>
         </li>
         <br>
         <li>
