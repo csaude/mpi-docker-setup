@@ -11,47 +11,54 @@ This repository contains scripts and instructions to set up a Docker container f
 Follow these steps to set up and use the MPI Docker container:
 
 <ol>
-        <li>
+        <ul>
                 Go to
-                <ul>
+                <li>
                         <code>cd /any/path</code>
-                </ul>
-        </li>
+                </li>
+        </ul>
         <br>
-        <li>
+        <ul>
                 Clone the Repository
-                <ul>
+                <li>
                         <code>git clone https://github.com/csaude/mpi-docker-setup.git</code>
-                </ul>
-                <ul>
+                </li>
+                <li>
                         <code>cd mpi-docker-setup</code>
-                </ul>
-        </li>
+                </li>
+        </ul>
         <br>
-        <li>
+        <ul>
         Copy a env file
-                <ul>
+                <li>
                         <code>cp sante-db-mpi-template.env mpi.env</code>
-                </ul>
-                <ul>
+                </li>
+                <li>
                         <pre>Provide the necessary values for properties in mpi.env </pre>
-                </ul>
-        </li>
+                </li>
+                <li>
+                        Copy the env file to profile.d directory
+                       <code>
+                                cp mpi.env /etc/profile.d/
+                                . /etc/profile.d/mpi.env
+                        </code>
+                </li>
+        </ul>
         <br>
-        <li>
+        <ul>
                 Install the Project
-                <ul>
+                <li>
                         <code>./install_mpi.sh</code>
-                </ul>
-                <ul>
+                </li>
+                <li>
                         <pre>Wait until all the containers start</pre>
-                </ul>
-                </ul>
-                 <ul>
+                </li>
+                </li>
+                 <li>
                         <pre>After all the containers started, then you need to restart a specific containers, in order to load the binding files related to the rules of match.
                         </pre>
-                </ul>
-        </li>
+                </li>
+        </ul>
         <br>
 
 </ol>
